@@ -1,3 +1,9 @@
+notifications:
+  email: false
+
+notifications:
+  slack: wtsi-cgpit:ptUMR1tkNyZJYd9TpGoss8WR
+
 language:
  - perl
 
@@ -9,15 +15,9 @@ perl:
  - "5.16"
  - "5.14"
 
-# blocklist
-branches:
-  except:/^feature.*/
-
 install: true
 
 script:
  - perl bin/test.pl
 
 
-
-# comment to check branch exclusion worked
