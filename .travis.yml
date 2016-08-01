@@ -2,16 +2,21 @@ language:
  - perl
 
 perl:
+ - "5.24"
  - "5.22"
  - "5.20"
  - "5.18"
  - "5.16"
  - "5.14"
 
+# blocklist
+branches:
+  except:/^feature.*/
+
 install: true
 
 script:
- - bin/test.pl
+ - perl bin/test.pl
 
 
 
