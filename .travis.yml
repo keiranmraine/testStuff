@@ -19,8 +19,7 @@ addons:
    - libpng12-dev
    - libexpat1-dev
 
-language:
- - c
+language: c
 
 install: true
 
