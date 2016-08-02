@@ -19,8 +19,10 @@ addons:
    - libpng12-dev
    - libexpat1-dev
 
+env:
+ - CC=gcc
+
 language:
- - c
  - perl
 
 perl:
@@ -30,6 +32,7 @@ perl:
 install: true
 
 script:
+ - gcc --version
  - perl --version
 # - curl -L https://github.com/ICGC-TCGA-PanCancer/PCAP-core/archive/feature/adapter-trim.zip > master.zip
 # - unzip master.zip
