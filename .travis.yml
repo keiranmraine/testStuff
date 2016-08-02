@@ -19,10 +19,10 @@ addons:
    - libpng12-dev
    - libexpat1-dev
 
-install: true
-
 language:
- - perl
+ - c
+
+install: true
 
 script:
  - curl -L https://github.com/ICGC-TCGA-PanCancer/PCAP-core/archive/feature/adapter-trim.zip > master.zip
