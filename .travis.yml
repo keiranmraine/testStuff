@@ -2,20 +2,41 @@ notifications:
   slack: wtsi-cgpit:ptUMR1tkNyZJYd9TpGoss8WR
   email: false
 
+sudo: required
+dist: trusty
+
 language:
  - perl
 
 perl:
  - "5.24"
- - "5.22"
- - "5.20"
- - "5.18"
- - "5.16"
- - "5.14"
 
 install: true
 
 script:
- - perl bin/test.pl
+ - gcc --version
 
 
+
+
+#notifications:
+#  slack: wtsi-cgpit:ptUMR1tkNyZJYd9TpGoss8WR
+#  email: false
+#
+#language:
+# - perl
+#
+#perl:
+# - "5.24"
+# - "5.22"
+# - "5.20"
+# - "5.18"
+# - "5.16"
+# - "5.14"
+#
+#install: true
+#
+#script:
+# - perl bin/test.pl
+#
+#
