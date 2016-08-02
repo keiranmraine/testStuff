@@ -24,6 +24,7 @@ language:
  - perl
 
 perl:
+ - "5.22"
  - "5.14"
 
 install: true
