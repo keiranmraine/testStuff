@@ -19,11 +19,17 @@ addons:
    - libpng12-dev
    - libexpat1-dev
 
-language: c
+language:
+ - c
+ - perl
+
+perl:
+ - "5.14"
 
 install: true
 
 script:
- - curl -L https://github.com/ICGC-TCGA-PanCancer/PCAP-core/archive/feature/adapter-trim.zip > master.zip
- - unzip master.zip
- - bash -c 'cd PCAP-core-feature-adapter-trim; ./setup.sh ~/wtsi-cgp'
+ - perl --version
+# - curl -L https://github.com/ICGC-TCGA-PanCancer/PCAP-core/archive/feature/adapter-trim.zip > master.zip
+# - unzip master.zip
+# - bash -c 'cd PCAP-core-feature-adapter-trim; ./setup.sh ~/wtsi-cgp'
