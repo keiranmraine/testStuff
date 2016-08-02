@@ -32,9 +32,7 @@ script:
  - unzip -q kentsrc.zip
  - perl -pi -e 's/(\s+CFLAGS=)$/${1}-fPIC/' kent/src/inc/common.mk
  - cd kent/src/lib
- - export MACHTYPE=i686    # for a 64-bit system
- - make -j$CPU
+ - env MACHTYPE=i686 make -j$CPU
  - cd ../
- - export KENT_SRC=`pwd`
  - cd ../
- - cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
+ - env KENT_SRC=kent/src cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
