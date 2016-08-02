@@ -32,4 +32,4 @@ script:
  - unzip -q kentsrc.zip
  - perl -pi -e 's/(\s+CFLAGS=)$/${1}-fPIC/' kent/src/inc/common.mk
  - env MACHTYPE=i686 make -C kent/src/lib -j$CPU
- - env KENT_SRC=kent/src cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
+ - export KENT_SRC=kent/src && cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
