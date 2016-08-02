@@ -14,6 +14,7 @@ perl:
  - "5.16"
 
 before_install:
+ - sudo apt-get update -yq
  - sudo apt-get install -yq build-essential
  - sudo apt-get install -yq autoconf
  - sudo apt-get install -yq bsdtar time curl
@@ -32,4 +33,4 @@ script:
  - unzip -q kentsrc.zip
  - perl -pi -e 's/(\s+CFLAGS=)$/${1}-fPIC/' kent/src/inc/common.mk
  - env MACHTYPE=i686 make -C kent/src/lib -j$CPU
- - export KENT_SRC=kent/src && cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
+ - bash -c 'export KENT_SRC=kent/src ; cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile'
