@@ -24,9 +24,6 @@ install: true
 language:
  - perl
 
-perl:
- - "5.16"
-
 #before_install:
 # - sudo apt-get update -yq
 # - sudo apt-get install -yq build-essential
@@ -42,9 +39,8 @@ perl:
 # - sudo apt-get install -yq libexpat1-dev
 
 script:
- - export CPU=`grep -c ^processor /proc/cpuinfo`
  - curl -L http://hgdownload.cse.ucsc.edu/admin/jksrc.zip > kentsrc.zip
  - unzip -q kentsrc.zip
  - perl -pi -e 's/(\s+CFLAGS=)$/${1}-fPIC/' kent/src/inc/common.mk
- - env MACHTYPE=i686 make -C kent/src/lib -j$CPU
+ - bach -c 'export MACHTYPE=i686; make -C kent/src/lib -j2
  - bash -c 'export KENT_SRC=kent/src; export MACHTYPE=i686; cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile'
