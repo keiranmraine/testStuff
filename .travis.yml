@@ -31,8 +31,5 @@ script:
  - curl -L http://hgdownload.cse.ucsc.edu/admin/jksrc.zip > kentsrc.zip
  - unzip -q kentsrc.zip
  - perl -pi -e 's/(\s+CFLAGS=)$/${1}-fPIC/' kent/src/inc/common.mk
- - cd kent/src/lib
- - env MACHTYPE=i686 make -j$CPU
- - cd ../
- - cd ../
+ - env MACHTYPE=i686 make -C kent/src/lib -j$CPU
  - env KENT_SRC=kent/src cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
