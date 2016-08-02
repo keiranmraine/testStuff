@@ -2,8 +2,22 @@ notifications:
   slack: wtsi-cgpit:ptUMR1tkNyZJYd9TpGoss8WR
   email: false
 
-sudo: required
-dist: trusty
+addons:
+ apt:
+  packages:
+   - build-essential
+   - autoconf
+   - bsdtar
+   - time
+   - curl
+   - libcurl4-openssl-dev
+   - nettle-dev
+   - zlib1g-dev
+   - libncurses5-dev
+   - libpstreams-dev
+   - unzip
+   - libpng12-dev
+   - libexpat1-dev
 
 install: true
 
@@ -13,19 +27,19 @@ language:
 perl:
  - "5.16"
 
-before_install:
- - sudo apt-get update -yq
- - sudo apt-get install -yq build-essential
- - sudo apt-get install -yq autoconf
- - sudo apt-get install -yq bsdtar time curl
- - sudo apt-get install -yq libcurl4-openssl-dev
- - sudo apt-get install -yq nettle-dev
- - sudo apt-get install -yq zlib1g-dev
- - sudo apt-get install -yq libncurses5-dev
- - sudo apt-get install -yq libpstreams-dev
- - sudo apt-get install -yq unzip
- - sudo apt-get install -yq libpng12-dev
- - sudo apt-get install -yq libexpat1-dev
+#before_install:
+# - sudo apt-get update -yq
+# - sudo apt-get install -yq build-essential
+# - sudo apt-get install -yq autoconf
+# - sudo apt-get install -yq bsdtar time curl
+# - sudo apt-get install -yq libcurl4-openssl-dev
+# - sudo apt-get install -yq nettle-dev
+# - sudo apt-get install -yq zlib1g-dev
+# - sudo apt-get install -yq libncurses5-dev
+# - sudo apt-get install -yq libpstreams-dev
+# - sudo apt-get install -yq unzip
+# - sudo apt-get install -yq libpng12-dev
+# - sudo apt-get install -yq libexpat1-dev
 
 script:
  - export CPU=`grep -c ^processor /proc/cpuinfo`
@@ -33,4 +47,4 @@ script:
  - unzip -q kentsrc.zip
  - perl -pi -e 's/(\s+CFLAGS=)$/${1}-fPIC/' kent/src/inc/common.mk
  - env MACHTYPE=i686 make -C kent/src/lib -j$CPU
- - env KENT_SRC=kent/src MACHTYPE=i686 cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile
+ - bash -c 'export KENT_SRC=kent/src; export MACHTYPE=i686; cpanm -v --no-interactive --mirror http://cpan.metacpan.org -l ~/wtsi-cgp Bio::DB::BigFile'
