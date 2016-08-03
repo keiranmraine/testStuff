@@ -19,9 +19,7 @@ addons:
    - libpng12-dev
    - libexpat1-dev
 
-language:
- - perl
- - c
+language: c
 
 perl:
  - "5.14"
