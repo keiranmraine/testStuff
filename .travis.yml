@@ -21,7 +21,6 @@ addons:
    - unzip
    - libpng12-dev
    - libexpat1-dev
-   - libhts-dev
 
 language: perl
 
