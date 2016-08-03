@@ -53,6 +53,10 @@ PERLROOT=$INST_PATH/lib/perl5
 export PERL5LIB="$PERLROOT"
 export PATH="$INST_PATH/bin:$PATH"
 
+#create a location to build dependencies
+SETUP_DIR=$INIT_DIR/install_tmp
+mkdir -p $SETUP_DIR
+
 get_file $SETUP_DIR/cpanm https://cpanmin.us/
 perl $SETUP_DIR/cpanm -l $INST_PATH App::cpanminus
 CPANM=`which cpanm`
