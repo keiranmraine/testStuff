@@ -1,17 +1,16 @@
 notifications:
-  slack: wtsi-cgpit:ptUMR1tkNyZJYd9TpGoss8WR
+  slack: wtsi-cgpit:vtT8FxSRsOnHblGjzu6YTfvN
   email: false
+
+env:
+ - CC=gcc
 
 addons:
  apt:
   packages:
    - build-essential
-   - autoconf
-   - bsdtar
-   - time
    - curl
    - libcurl4-openssl-dev
-   - nettle-dev
    - zlib1g-dev
    - libncurses5-dev
    - libpstreams-dev
@@ -19,11 +18,12 @@ addons:
    - libpng12-dev
    - libexpat1-dev
 
-language: c
+language: perl
+
+perl:
+ - "5.14"
 
 install: true
 
 script:
- - curl -L https://github.com/ICGC-TCGA-PanCancer/PCAP-core/archive/feature/adapter-trim.zip > master.zip
- - unzip master.zip
- - bash -c 'cd PCAP-core-feature-adapter-trim; ./setup.sh ~/wtsi-cgp'
+ - Bio-BigFile/travis/setup.sh ~/build
