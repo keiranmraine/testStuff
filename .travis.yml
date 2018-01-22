@@ -13,7 +13,7 @@ script:
   - mkdir test
   - echo "#!/bin/bash" >> test/script.sh
   - echo "set -uxe" >> test/script.sh
-  - echo 'grep -c ^processor /proc/cpuinfo" | wc -l' >> test/script.sh
+  - echo 'grep -c ^processor /proc/cpuinfo' >> test/script.sh
   - echo "FROM  alpine:3.7" > test/Dockerfile
   - echo "RUN apk update" >> test/Dockerfile
   - echo "RUN apk upgrade" >> test/Dockerfile
