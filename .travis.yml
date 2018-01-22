@@ -11,11 +11,15 @@ services:
 script:
   - cat /proc/cpuinfo | egrep "^processor" | wc -l
   - mkdir test
+  - echo "#!/bin/bash" >> test/script.sh
+  - echo "set -uxe" >> test/script.sh
+  - echo 'cat /proc/cpuinfo | egrep "^processor" | wc -l' >> test/script.sh
   - echo "FROM  alpine:3.7" > test/Dockerfile
   - echo "RUN apk update" >> test/Dockerfile
   - echo "RUN apk upgrade" >> test/Dockerfile
   - echo "RUN apk add bash" >> test/Dockerfile
-  - echo 'CMD ["cat /proc/cpuinfo | egrep "^processor" | wc -l"]' >> test/Dockerfile
+  - echo 'ADD ./script.sh ~/script.sh' >> test/Dockerfile
+  - echo 'CMD ["/bin/bash", "~/script.sh"]' >> test/Dockerfile
   - cd test
   - docker build -t wibble .
   - docker run wibble
