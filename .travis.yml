@@ -12,6 +12,8 @@ script:
   - cat /proc/cpuinfo | egrep "^processor" | wc -l
   - mkdir test
   - echo "FROM  alpine:3.7" > test/Dockerfile
+  - echo "RUN apk update" >> test/Dockerfile
+  - echo "RUN apk upgrade" >> test/Dockerfile
   - echo "RUN apk add bash" >> test/Dockerfile
   - echo 'CMD ["/bin/bash"]' >> test/Dockerfile
   - cd test
