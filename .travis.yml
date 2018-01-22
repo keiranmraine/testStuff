@@ -15,10 +15,10 @@ script:
   - echo "RUN apk update" >> test/Dockerfile
   - echo "RUN apk upgrade" >> test/Dockerfile
   - echo "RUN apk add bash" >> test/Dockerfile
-  - echo 'CMD ["/bin/bash"]' >> test/Dockerfile
+  - echo 'CMD ["cat /proc/cpuinfo | egrep "^processor" | wc -l"]' >> test/Dockerfile
   - cd test
   - docker build -t wibble .
-  - docker run wibble 'cat /proc/cpuinfo | egrep "^processor" | wc -l'
+  - docker run wibble
 
 #  - curl -sSL https://github.com/cancerit/dockstore-cgpmap/archive/feature/mmqc_metaRg.tar.gz | tar -zx
 #  - cd dockstore-cgpmap-feature-mmqc_metaRg
